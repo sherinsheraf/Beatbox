@@ -27,7 +27,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
   bool isRepeat = false;
   bool isShuffle = false;
   bool isFavorite = false;
-
+bool ischecking = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -90,7 +90,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
           child: assetsAudioPlayer.builderCurrent(
             builder: (context, playing) {
               int id = int.parse(playing.audio.audio.metas.id ?? "");
-              bool ischecking = favoriteChecking(id);
+               ischecking = favoriteChecking(id);
               findCurrentSong(id);
               mostplayedadd(currentPlayingsong!);
               recentadd(currentPlayingsong!);
@@ -116,7 +116,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                           ),
                         ),
                         GestureDetector(
-                          onDoubleTap: () {
+                          onTap: () {
                             setState(
                               () {
                                 if (ischecking == true) {

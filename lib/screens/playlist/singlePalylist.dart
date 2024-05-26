@@ -95,7 +95,7 @@ class SinglePlayListScreen extends StatelessWidget {
                                         artworkHeight: 70,
                                         artworkWidth: 70,
                                         nullArtworkWidget: Image.asset(
-                                          'assets/dummy.jpg',
+                                          'assets/images/dummy.jpg',
                                           fit: BoxFit.cover,
                                           width: 70,
                                           height: 70,
