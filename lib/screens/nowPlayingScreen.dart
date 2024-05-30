@@ -27,7 +27,8 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
   bool isRepeat = false;
   bool isShuffle = false;
   bool isFavorite = false;
-bool ischecking = false;
+   bool ischecking = false;
+ 
   @override
   Widget build(BuildContext context) {
     return SafeArea(

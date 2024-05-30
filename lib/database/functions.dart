@@ -192,7 +192,7 @@ bool favoriteChecking(int data) {
 ValueNotifier<List<HiveSongModel>> recentList = ValueNotifier([]);
 
 recentadd(HiveSongModel song) async {
-  print(song.id); 
+ 
   Box<int> recentDb = await Hive.openBox('recent');
   List<int> temp = [];
   temp.addAll(recentDb.values);
