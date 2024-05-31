@@ -34,7 +34,7 @@ class BottomNavigationScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(canvasColor: KBprimary),
+        data: Theme.of(context).copyWith(canvasColor: Kprimary),
         child: ValueListenableBuilder(
           valueListenable: _currentIndex,
           builder: (BuildContext context, int updatedindex, child) {
