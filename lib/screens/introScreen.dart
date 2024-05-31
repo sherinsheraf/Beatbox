@@ -1,11 +1,11 @@
+import 'package:beatbox/class/first.dart';
+import 'package:beatbox/screens/homePage.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:beatbox/database/functions.dart';
 import 'package:beatbox/database/model/songModel.dart';
 import 'package:beatbox/widgets/navigationBottomBar.dart';
-import 'package:flutter/material.dart';
-
 import 'package:on_audio_query/on_audio_query.dart';
-import 'homePage.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 late List<HiveSongModel> allSongs;
 
@@ -38,8 +38,8 @@ class _IntroPageState extends State<IntroPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 // Text: Get your favourite
-                Text(
-                  'Explore Your Perfect Soundtrack',
+                CustomText(
+                  text: 'Explore Your Perfect Soundtrack',
                   style: GoogleFonts.lato(
                       fontSize: 24,
                       color: Colors.white,
@@ -47,8 +47,8 @@ class _IntroPageState extends State<IntroPage> {
                 ),
                 SizedBox(height: 10),
                 // Text: Play music
-                Text(
-                  'Discover. Play. Repeat',
+                CustomText(
+                  text: 'Discover. Play. Repeat',
                   style: GoogleFonts.robotoCondensed(
                       fontSize: 18,
                       color: Colors.white,
@@ -56,7 +56,8 @@ class _IntroPageState extends State<IntroPage> {
                 ),
                 SizedBox(height: 40),
                 // Button: Get Connected
-                ElevatedButton(
+                CustomButton(
+                  text: 'Get Connected',
                   onPressed: () {
                     // Navigate to HomePage when button is pressed
                     Navigator.push(
@@ -69,29 +70,6 @@ class _IntroPageState extends State<IntroPage> {
                       }),
                     );
                   },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      Color.fromARGB(255, 131, 16, 83), // Background color
-                    ),
-                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                      EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 20), // Padding
-                    ),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(50), // Rounded corners
-                      ),
-                    ),
-                  ),
-                  child: Text(
-                    'Get Connected',
-                    style: GoogleFonts.playfairDisplay(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
                 ),
               ],
             ),
@@ -120,7 +98,6 @@ class _IntroPageState extends State<IntroPage> {
             .toList();
       });
     }
-    
   }
 }
 
@@ -131,7 +108,7 @@ Future<void> goToHome(BuildContext context) async {
     MaterialPageRoute(
         builder: (BuildContext context) => BottomNavigationScreen()),
   );
-     await fetchForRecentlyPlayed(allSongs);
-    await favFetch();
-     await fetchForMostlyPlayed(allSongs);
+  await fetchForRecentlyPlayed(allSongs);
+  await favFetch();
+  await fetchForMostlyPlayed(allSongs);
 }

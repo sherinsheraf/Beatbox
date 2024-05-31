@@ -1,3 +1,4 @@
+import 'package:beatbox/class/first.dart';
 import 'package:beatbox/database/functions.dart';
 import 'package:beatbox/utils/colors.dart';
 import 'package:beatbox/widgets/miniPlayer.dart';
@@ -23,29 +24,8 @@ class _MyFavoritesState extends State<MyFavorites> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Kprimary,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(50),
-            ),
-          ),
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: MixPrimary, // Assuming MixPrimary is a List<Color>
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-              ),
-            ),
-          ),
-          centerTitle: true,
-          title: const Text(
-            'My favorites',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
+        appBar: CustomAppBar(title: 'My Favorites',
+        gradientColors: [Colors.blue, Colors.purple],
         ),
         body: Container(
           decoration: const BoxDecoration(

@@ -1,8 +1,8 @@
+import 'package:beatbox/class/first.dart';
 import 'package:beatbox/database/functions.dart';
 import 'package:beatbox/screens/playlist/singlePalylist.dart';
 import 'package:beatbox/utils/colors.dart';
 import 'package:flutter/material.dart';
-
 
 class Playlist extends StatefulWidget {
   const Playlist({Key? key}) : super(key: key);
@@ -29,27 +29,10 @@ class _PlaylistState extends State<Playlist> {
       valueListenable: playlistnotifier,
       builder: (context, value, child) {
         return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Kprimary,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(50),
-              ),
-            ),
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: MixPrimary, // Assuming MixPrimary is a List<Color>
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                ),
-              ),
-            ),
-            title: const Text(
-              'Playlists',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
+          
+          appBar: CustomAppBar(
+            title: 'Playlist',
+            gradientColors: [Colors.blue, Colors.purple],
             actions: [
               IconButton(
                 onPressed: () {
@@ -61,6 +44,8 @@ class _PlaylistState extends State<Playlist> {
               )
             ],
           ),
+
+
           body: Container(
             decoration: const BoxDecoration(
                 gradient: LinearGradient(

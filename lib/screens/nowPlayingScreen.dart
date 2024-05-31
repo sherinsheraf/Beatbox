@@ -1,6 +1,7 @@
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
+import 'package:beatbox/class/first.dart';
 import 'package:beatbox/database/functions.dart';
 import 'package:beatbox/database/model/songModel.dart';
 import 'package:beatbox/screens/playlist/addToPlaylist.dart';
@@ -33,29 +34,9 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Kprimary,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(50),
-            ),
-          ),
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: MixPrimary, // Assuming MixPrimary is a List<Color>
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-              ),
-            ),
-          ),
-          title: const Text(
-            'Now Playing',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+     appBar: CustomAppBar(
+          title: 'Now Playing',
+          gradientColors: [Colors.blue, Colors.purple],
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -73,13 +54,13 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => AddToPlaylistsScreen(
-                      music: widget.music!,
+                       music: widget.music!,
                     ),
                   ),
                 );
               },
               icon: const Icon(Icons.playlist_add),
-            )
+            ),
           ],
         ),
         body: Container(

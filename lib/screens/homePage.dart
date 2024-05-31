@@ -1,3 +1,5 @@
+
+import 'package:beatbox/class/first.dart';
 import 'package:beatbox/database/functions.dart';
 
 import 'package:beatbox/database/model/songModel.dart';
@@ -41,68 +43,42 @@ class _HomePageState extends State<HomePage> {
 
     return SafeArea(
       child: Scaffold(
-        appBar: _buildAppBar(context),
-         body: _buildBody(context),
-      
+       appBar: CustomAppBar(
+          title: 'Beat Box',
+          gradientColors: [Colors.blue, Colors.purple],
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const SearchScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.search),
+              color: Colors.white,
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const SettingsScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.settings),
+              color: Colors.white,
+            ),
+          ],
+        ),
+        body: _buildBody(context),
       ),
     );
   }
+    
 
-
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      backgroundColor: Kprimary,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(50),
-        ),
-      ),
-      flexibleSpace: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: MixPrimary, // Assuming MixPrimary is a List<Color>
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-          ),
-        ),
-      ),
-      title: const Text(
-        'BEAT BOX',
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
-        textAlign: TextAlign.center,
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => const SearchScreen(),
-              ),
-            );
-          },
-          icon: const Icon(Icons.search),
-          color: Colors.white,
-        ),
-        IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => const SettingsScreen(),
-              ),
-            );
-          },
-          icon: const Icon(Icons.settings),
-          color: Colors.white,
-        ),
-      ],
-    );
-  }
   
    Widget _buildBody(BuildContext context) {
     return Container(

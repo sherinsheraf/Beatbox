@@ -1,3 +1,4 @@
+import 'package:beatbox/class/first.dart';
 import 'package:beatbox/screens/settings/about.dart';
 import 'package:beatbox/screens/settings/privacyPolicy.dart';
 import 'package:beatbox/screens/settings/terms_and_condition.dart';
@@ -18,28 +19,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: KBprimary,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(16),
-            ),
-          ),
-          title: const Text(
-            'Settings',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
+          appBar: CustomAppBar(
+    title: 'Search',gradientColors: [Colors.blue, Colors.purple],
+    leading: IconButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
             icon: const Icon(
               Icons.arrow_back,
               size: 28,
               color: Colors.white,
             ),
-          ),
-        ),
+          ),),
+        
         body: Container(
           decoration: const BoxDecoration(
               gradient: LinearGradient(

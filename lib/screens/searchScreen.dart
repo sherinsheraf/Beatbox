@@ -1,4 +1,5 @@
 
+import 'package:beatbox/class/first.dart';
 import 'package:beatbox/database/functions.dart';
 import 'package:beatbox/database/model/songModel.dart';
 import 'package:beatbox/screens/playlist/addToPlaylist.dart';
@@ -26,37 +27,20 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Kprimary,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(50),
-            ),
-          ),
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: MixPrimary,
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-              ),
-            ),
-          ),
-          title: const Text(
-            'Search',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-              size: 28,
-              color: Colors.white,
-            ),
-          ),
-        ),
+       appBar: CustomAppBar(
+    title: 'Search',gradientColors: [Colors.blue, Colors.purple],
+    leading: IconButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      icon: const Icon(
+        Icons.arrow_back,
+        size: 28,
+        color: Colors.white,
+      ),
+    ),
+  ),
+
         body: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
