@@ -1,7 +1,11 @@
+
+
+import 'package:beatbox/customclass/customWidget.dart';
 import 'package:beatbox/database/functions.dart';
 import 'package:beatbox/database/model/songModel.dart';
 import 'package:beatbox/utils/colors.dart';
 import 'package:beatbox/widgets/miniPlayer.dart';
+
 import 'package:flutter/material.dart';
 
 class AddToPlaylistsScreen extends StatefulWidget {
@@ -16,22 +20,20 @@ class _AddToPlaylistsScreenState extends State<AddToPlaylistsScreen> {
   final TextEditingController _playlistNameController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    setState(() {
+      retrieveAllPlaylists();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          backgroundColor: KBprimary,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(50),
-            ),
-          ),
-          title: const Text(
-            'Add To Playlist',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
+        appBar: CustomAppBar(
+          title: 'Add To Playlist',
+          gradientColors: [Colors.blue, Colors.purple],
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -43,12 +45,7 @@ class _AddToPlaylistsScreenState extends State<AddToPlaylistsScreen> {
             ),
           ),
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.topLeft,
-                  colors: MixPrimary)),
+        body: CustomBackground(
           child: ValueListenableBuilder(
             valueListenable: playlistnotifier,
             builder: (context, value, child) {
@@ -119,8 +116,6 @@ class _AddToPlaylistsScreenState extends State<AddToPlaylistsScreen> {
                                           createNewPlaylist(
                                               _playlistNameController.text);
                                           Navigator.pop(context);
-                                          // Refresh the state to update the list
-                                          setState(() {});
                                         }
                                       },
                                       child: const Text(

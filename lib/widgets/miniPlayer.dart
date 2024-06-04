@@ -66,7 +66,7 @@ class MiniPlayerState extends State<MiniPlayer> {
                 id: int.tryParse(playing.audio.audio.metas.id!) ?? 0,
                 type: ArtworkType.AUDIO,
                 nullArtworkWidget: const CircleAvatar(
-                  backgroundImage: AssetImage('assets/Images/dummy.jpg'),
+                  backgroundImage: AssetImage('assets/images/dummy.jpg'),
                 ),
                 artworkFit: BoxFit.fill,
               ),

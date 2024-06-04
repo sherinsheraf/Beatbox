@@ -1,10 +1,9 @@
-import 'package:beatbox/class/first.dart';
+import 'package:beatbox/customClass/customWidget.dart';
 import 'package:beatbox/screens/settings/about.dart';
 import 'package:beatbox/screens/settings/privacyPolicy.dart';
 import 'package:beatbox/screens/settings/terms_and_condition.dart';
 import 'package:beatbox/utils/colors.dart';
 import 'package:flutter/material.dart';
-// Import the share_plus package
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -15,29 +14,33 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool istrue = false;
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: CustomAppBar(
-    title: 'Search',gradientColors: [Colors.blue, Colors.purple],
-    leading: IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
+        appBar: CustomAppBar(
+          title: 'Search',
+          gradientColors: [Colors.blue, Colors.purple],
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: const Icon(
               Icons.arrow_back,
               size: 28,
               color: Colors.white,
             ),
-          ),),
-        
+          ),
+        ),
         body: Container(
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.topLeft,
-                  colors: MixPrimary)),
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.topLeft,
+              colors: MixPrimary,
+            ),
+          ),
           child: Column(
             children: [
               ListTile(
@@ -60,13 +63,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 trailing: IconButton(
                   onPressed: () {
-                    {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const PrivacyPolicy(),
-                        ),
-                      );
-                    }
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const PrivacyPolicy(),
+                      ),
+                    );
                   },
                   icon: const Icon(Icons.privacy_tip),
                   color: Colors.white,
@@ -79,14 +80,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 trailing: IconButton(
                   onPressed: () {
-                    {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              const TermsAndConditions(),
-                        ),
-                      );
-                    }
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const TermsAndConditions(),
+                      ),
+                    );
                   },
                   icon: const Icon(Icons.arrow_forward_ios),
                   color: Colors.white,
@@ -99,16 +97,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 trailing: IconButton(
                   onPressed: () {
-                    {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const AboutUs(),
-                        ),
-                      );
-                    }
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const AboutUs(),
+                      ),
+                    );
                   },
                   icon: const Icon(Icons.arrow_forward_ios),
                   color: Colors.white,
+                ),
+              ),
+              
+               SizedBox(height: 300.0),// Add a Container to display the version number
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Version',
+                      style: TextStyle(fontSize: 14.0, color: Colors.white),
+                    ),
+                     SizedBox(height: 16.0),
+                    // Add some space between the lines
+                    Text(
+                      '1.0.0',
+                      style: TextStyle(fontSize: 16.0, color:Colors.white),
+                    ),
+                  ],
                 ),
               ),
             ],

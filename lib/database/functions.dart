@@ -64,6 +64,7 @@ favFetch() async {
       favdb.delete(key);
     }
   }
+  fav.notifyListeners();
 }
 
 List<Audio> audioList = [];
@@ -148,27 +149,48 @@ Future<List<HiveSongModel>> getSongs() async {
 // Favorites screen
 ValueNotifier<List<HiveSongModel>> fav = ValueNotifier([]);
 
-addToFavorites(int id) async {
-  final favDB = await Hive.openBox<FavoriteModel>('fav_DB');
-  await favDB.put(id, FavoriteModel(id: id));
-  for (var elements in allSongs) {
-    if (elements.id == id) {
-      fav.value.add(elements);
+Future<void> addToFavorites(int id) async {
+  try {
+    final favDB = await Hive.openBox<FavoriteModel>('fav_DB');
+
+    // Check if the item is already in the favorites database
+    if (!favDB.containsKey(id)) {
+      await favDB.put(id, FavoriteModel(id: id));
     }
+
+    // Avoid duplicate entries in the favorites list
+    if (fav.value.any((element) => element.id == id)) {
+      return; // Item is already in the favorites list
+    }
+
+    // Find the song in allSongs and add it to the favorites
+    for (var element in allSongs) {
+      if (element.id == id) {
+        fav.value = List.from(fav.value)..add(element);
+        break; // Exit the loop once the item is found and added
+      }
+    }
+     fav.notifyListeners();
+  } catch (e) {
+    // Handle potential errors, like issues with the database
+    print("Error adding to favorites: $e");
   }
+  
 }
 
 Future<void> removeFromFav(int id) async {
-  final favDB = await Hive.openBox<FavoriteModel>('fav_DB');
-  await favDB.delete(id);
-  for (var element in allSongs) {
-    if (element.id == id) {
-      fav.value.remove(element);
-    }
-  }
+  try {
+    final favDB = await Hive.openBox<FavoriteModel>('fav_DB');
 
-  // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
-  fav.notifyListeners();
+    // Delete from the database
+    await favDB.delete(id);
+
+    // Remove from the favorites list
+    fav.value = fav.value.where((element) => element.id != id).toList();
+  } catch (e) {
+    // Handle potential errors, like issues with the database
+    print("Error removing from favorites: $e");
+  }
 }
 
 bool favoriteChecking(int data) {
@@ -359,9 +381,9 @@ void addSongToPlaylistAndShowSnackbar(
       SnackBar(
         content: const Text(
           'Song added to playlist successfully',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Color.fromARGB(255, 253, 251, 251)),
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: const Color.fromARGB(255, 8, 8, 8),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
     );
@@ -374,7 +396,7 @@ void addSongToPlaylistAndShowSnackbar(
           'The song is already added to the playlist',
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: const Color.fromARGB(255, 252, 250, 250),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
     );

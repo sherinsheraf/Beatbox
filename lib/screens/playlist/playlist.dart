@@ -1,4 +1,4 @@
-import 'package:beatbox/class/first.dart';
+import 'package:beatbox/customClass/customWidget.dart';
 import 'package:beatbox/database/functions.dart';
 import 'package:beatbox/screens/playlist/singlePalylist.dart';
 import 'package:beatbox/utils/colors.dart';
@@ -73,7 +73,7 @@ class _PlaylistState extends State<Playlist> {
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(15),
-                                        color: KBprimary),
+                                        color: Kprimary),
                                     height: 70,
                                     child: InkWell(
                                       onTap: () {
@@ -350,7 +350,7 @@ class _PlaylistState extends State<Playlist> {
                       'Playlist deleted successfully',
                       style: TextStyle(color: Colors.black),
                     ),
-                    backgroundColor: Colors.red,
+                    backgroundColor: Color.fromARGB(255, 253, 251, 251),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),

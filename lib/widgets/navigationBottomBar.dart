@@ -1,5 +1,3 @@
-
-
 import 'package:beatbox/screens/favourites.dart';
 import 'package:beatbox/screens/homePage.dart';
 import 'package:beatbox/screens/mostlyPlayed.dart';
@@ -18,8 +16,8 @@ class BottomNavigationScreen extends StatelessWidget {
     const HomePage(),
     const RecentlyPlayed(),
     const Playlist(),
-    const MostlyPlayed(),
     const MyFavorites(),
+    const MostlyPlayed(),
   ];
 
   @override
@@ -70,17 +68,17 @@ class BottomNavigationScreen extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.menu,
-                    size: 28,
-                  ),
-                  label: 'Mosly Played ',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
                     Icons.favorite,
                     size: 28,
                   ),
                   label: 'Favorite',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.menu,
+                    size: 28,
+                  ),
+                  label: 'Mosly Played ',
                 ),
               ],
             );

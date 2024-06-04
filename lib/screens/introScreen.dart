@@ -1,4 +1,4 @@
-import 'package:beatbox/class/first.dart';
+import 'package:beatbox/customClass/customWidget.dart';
 import 'package:beatbox/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,7 +29,7 @@ class _IntroPageState extends State<IntroPage> {
         children: <Widget>[
           // Background Image
           Image.asset(
-            'assets/Images/background.jpg', // Replace with your background image path
+            'assets/images/background.jpg', // Replace with your background image path
             fit: BoxFit.cover,
           ),
           // Content
@@ -57,7 +57,9 @@ class _IntroPageState extends State<IntroPage> {
                 SizedBox(height: 40),
                 // Button: Get Connected
                 CustomButton(
-                  text: 'Get Connected',
+                  text: 'Beat Box',
+                  backgroundColor: Color.fromARGB(255, 99, 23, 90), // Maroon color
+                  textColor: Color.fromARGB(255, 250, 248, 250),
                   onPressed: () {
                     // Navigate to HomePage when button is pressed
                     Navigator.push(
@@ -67,7 +69,7 @@ class _IntroPageState extends State<IntroPage> {
                         goToHome(context);
                         // Return the HomePage widget
                         return HomePage();
-                      }),
+                      } ),
                     );
                   },
                 ),

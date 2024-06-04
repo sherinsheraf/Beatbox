@@ -35,7 +35,7 @@ class AboutUs extends StatelessWidget {
           icon: const Icon(
             Icons.arrow_back,
             size: 28,
-            color: Colors.black87,
+            color: Color.fromARGB(221, 0, 0, 0),
           ),
         ),
       ),

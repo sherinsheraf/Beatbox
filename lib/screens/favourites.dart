@@ -1,10 +1,12 @@
-import 'package:beatbox/class/first.dart';
 import 'package:beatbox/database/functions.dart';
-import 'package:beatbox/utils/colors.dart';
+import 'package:beatbox/database/model/songModel.dart';
 import 'package:beatbox/widgets/miniPlayer.dart';
 import 'package:beatbox/screens/nowPlayingScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:on_audio_query/on_audio_query.dart';
+
+
+// Import the custom widgets and functions
+import 'package:beatbox/customClass/customWidget.dart';
 
 class MyFavorites extends StatefulWidget {
   const MyFavorites({super.key});
@@ -15,182 +17,43 @@ class MyFavorites extends StatefulWidget {
 
 class _MyFavoritesState extends State<MyFavorites> {
   @override
-  void initState() {
-    //setState(() {});
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(title: 'My Favorites',
-        gradientColors: [Colors.blue, Colors.purple],
+        appBar: CustomAppBar(
+          title: 'My Favorites',
+          gradientColors: [Colors.blue, Colors.purple],
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.topLeft,
-                  colors: MixPrimary)),
+        body: CustomBackground(
           child: ValueListenableBuilder(
             valueListenable: fav,
             builder: (context, value, child) {
-              return Row(
-                children: [
-                  Expanded(
-                    child: fav.value.isEmpty
-                        ? const Center(
-                            child: Text('No favorite songs available'),
-                          )
-                        : ListView.builder(
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(16),
-                                      child: QueryArtworkWidget(
-                                          artworkClipBehavior: Clip.none,
-                                          artworkHeight: 70,
-                                          artworkWidth: 70,
-                                          nullArtworkWidget: Image.asset(
-                                            'assets/Images/dummy.jpg',
-                                            fit: BoxFit.cover,
-                                            width: 70,
-                                            height: 70,
-                                          ),
-                                          id: fav.value[index].id!,
-                                          type: ArtworkType.AUDIO),
-                                    ),
-                                    const SizedBox(
-                                      width: 8,
-                                    ),
-                                    Expanded(
-                                      child: InkWell(
-                                        onTap: () {
-                                          audioConverter(fav.value, index);
-
-                                          // Move the navigation to NowPlayingScreen here
-                                          navigateToNowPlayingScreen();
-                                        },
-                                        child: Container(
-                                          height: 70,
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              color: Kprimary),
-                                          child: ListTile(
-                                            title: Text(
-                                              fav.value[index].name!,
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
-                                              maxLines: 1,
-                                            ),
-                                            subtitle: Text(
-                                                fav.value[index].artist ??
-                                                    'unknown',
-                                                style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white),
-                                                maxLines: 1),
-                                            trailing: IconButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  if (fav.value.contains(
-                                                      fav.value[index])) {
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (BuildContext
-                                                          context) {
-                                                        return AlertDialog(
-                                                          title: const Text(
-                                                              'Confirmation'),
-                                                          content: const Text(
-                                                              'Are you sure you want to remove the song from favorites?'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () {
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                              child: const Text(
-                                                                'Cancel',
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .black),
-                                                              ),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () {
-                                                                removeFromFav(fav
-                                                                    .value[
-                                                                        index]
-                                                                    .id!);
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                                ScaffoldMessenger.of(
-                                                                        context)
-                                                                    .showSnackBar(
-                                                                  const SnackBar(
-                                                                    content: Text(
-                                                                        'Song is removed from favorites successfully'),
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .red,
-                                                                  ),
-                                                                );
-                                                              },
-                                                              child: const Text(
-                                                                'Remove',
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .black),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    );
-                                                  } else {
-                                                    addToFavorites(
-                                                        fav.value[index].id!);
-                                                    ScaffoldMessenger.of(
-                                                            context)
-                                                        .showSnackBar(
-                                                      const SnackBar(
-                                                        content: Text(
-                                                            'Song added to favorites successfully'),
-                                                        backgroundColor:
-                                                            Colors.green,
-                                                      ),
-                                                    );
-                                                  }
-                                                });
-                                              },
-                                              icon: Icon(
-                                                Icons.favorite,
-                                                color: Colors.red,
-                                                size: 20,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                            itemCount: fav.value.length),
-                  ),
-                ],
-              );
+              if (fav.value.isEmpty) {
+                return const Center(
+                  child: Text('No favorite songs available'),
+                );
+              } else {
+                return ListView.builder(
+                  itemCount: fav.value.length,
+                  itemBuilder: (context, index) {
+                    final song = fav.value[index];
+                    return CustomSongListTile(
+                      song: song,
+                      onTap: () {
+                        audioConverter(fav.value, index);
+                        navigateToNowPlayingScreen(song);
+                      },
+                      onSelected: (value) {
+                        if (value == 'favorites') {
+                          handleFavorite(song, context);
+                        } else if (value == 'playlist') {
+                          handlePlaylist(song, context);
+                        }
+                      },
+                    );
+                  },
+                );
+              }
             },
           ),
         ),
@@ -199,11 +62,11 @@ class _MyFavoritesState extends State<MyFavorites> {
     );
   }
 
-  void navigateToNowPlayingScreen() {
+  void navigateToNowPlayingScreen(HiveSongModel song) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const NowPlayingScreen(),
+        builder: (context) => NowPlayingScreen(music: song),
       ),
     );
   }

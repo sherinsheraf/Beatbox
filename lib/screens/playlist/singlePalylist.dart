@@ -34,13 +34,13 @@ class SinglePlayListScreen extends StatelessWidget {
             icon: const Icon(
               Icons.arrow_back,
               size: 28,
-              color: Colors.white,
+              color: Color.fromRGBO(255, 255, 255, 1),
             ),
           ),
           backgroundColor: KBprimary,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(50),
+              bottom: Radius.circular(45),
             ),
           ),
           title: Text(
@@ -103,7 +103,7 @@ class SinglePlayListScreen extends StatelessWidget {
                                         id: playlistnotifier
                                             .value[idx].playlist![index].id!,
                                         type: ArtworkType.AUDIO,
-                                      ),
+                                    ),
                                     ),
                                     const SizedBox(width: 8),
                                     Expanded(
@@ -223,8 +223,7 @@ class SinglePlayListScreen extends StatelessWidget {
                                                                                 Colors.black),
                                                                       ),
                                                                       backgroundColor:
-                                                                          Colors
-                                                                              .red,
+                                                                          Color.fromARGB(255, 247, 245, 245),
                                                                       shape:
                                                                           RoundedRectangleBorder(
                                                                         borderRadius:
@@ -259,7 +258,7 @@ class SinglePlayListScreen extends StatelessWidget {
                                                                     .black),
                                                           ),
                                                           backgroundColor:
-                                                              Colors.green,
+                                                              Color.fromARGB(255, 5, 5, 5),
                                                           shape:
                                                               RoundedRectangleBorder(
                                                             borderRadius:
