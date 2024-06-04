@@ -4,6 +4,7 @@ import 'package:beatbox/screens/settings/privacyPolicy.dart';
 import 'package:beatbox/screens/settings/terms_and_condition.dart';
 import 'package:beatbox/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -118,7 +119,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       'Version',
                       style: TextStyle(fontSize: 14.0, color: Colors.white),
                     ),
-                     SizedBox(height: 16.0),
+                     SizedBox(height: 14.0),
                     // Add some space between the lines
                     Text(
                       '1.0.0',
@@ -137,7 +138,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   // Method to show the share dialog with a predefined text
   void _shareApp() {
-    // const String text = 'https://www.amazon.com/dp/B0CVMY5X61/ref=apps_sf_sta';
-    // Share.share(text);
+     const String text = 'http://www.amazon.com/gp/mas/dl/android?p=com.beatbox.music';
+    Share.share(text);
+    
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const String text = 'https://www.amazon.com/dp/B0CVMY5X61/ref=apps_sf_sta';
+    // Share.share(text);

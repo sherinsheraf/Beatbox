@@ -1,3 +1,13 @@
+buildscript {
+    ext.kotlin_version = '1.6.0' // Specify the desired Kotlin version here
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
 plugins {
     id "com.android.application"
     id "kotlin-android"
@@ -47,7 +57,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.beatbox"
+        applicationId "com.beatbox.music"
         multiDexEnabled true
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
@@ -61,6 +71,7 @@ android {
         }
     }
 }
+
 
 flutter {
     source '../..'
