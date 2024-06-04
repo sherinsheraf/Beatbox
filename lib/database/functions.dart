@@ -64,7 +64,7 @@ favFetch() async {
       favdb.delete(key);
     }
   }
-  fav.notifyListeners();
+ // fav.notifyListeners();
 }
 
 List<Audio> audioList = [];
@@ -170,7 +170,7 @@ Future<void> addToFavorites(int id) async {
         break; // Exit the loop once the item is found and added
       }
     }
-     fav.notifyListeners();
+     //fav.notifyListeners();
   } catch (e) {
     // Handle potential errors, like issues with the database
     print("Error adding to favorites: $e");
