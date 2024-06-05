@@ -1,8 +1,10 @@
+
+import 'package:beatbox/database/model/song_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart'; // Import path_provider package
-import 'screens/introScreen.dart';
-import 'package:beatbox/database/model/songModel.dart';
+import 'screens/intro_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,10 +26,14 @@ void main() async {
   // Add a song to the database
  // await MainPage.addSongToDatabase('Song Name', 'Artist Name', 180, 1, 'song_uri');
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+   const MyApp({
+     super.key,  // Add the named key parameter
+  });
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
