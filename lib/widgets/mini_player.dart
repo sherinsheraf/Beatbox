@@ -4,14 +4,14 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:beatbox/database/functions.dart';
 import 'package:beatbox/utils/colors.dart';
-import 'package:beatbox/screens/introScreen.dart';
-import 'package:beatbox/screens/nowPlayingScreen.dart';
+import 'package:beatbox/screens/intro_screen.dart';
+import 'package:beatbox/screens/now_playing_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class MiniPlayer extends StatefulWidget {
-  const MiniPlayer({Key? key}) : super(key: key);
+  const MiniPlayer({super. key}) ;
 
   @override
   State<MiniPlayer> createState() => MiniPlayerState();

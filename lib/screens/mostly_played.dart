@@ -1,8 +1,9 @@
-import 'package:beatbox/customClass/customWidget.dart';
+import 'package:beatbox/custom_class/custom_widget.dart';
 import 'package:beatbox/database/functions.dart';
-import 'package:beatbox/database/model/songModel.dart';
-import 'package:beatbox/screens/nowPlayingScreen.dart';
-import 'package:beatbox/widgets/miniPlayer.dart';
+import 'package:beatbox/database/model/song_model.dart';
+
+import 'package:beatbox/screens/now_playing_screen.dart';
+import 'package:beatbox/widgets/mini_player.dart';
 import 'package:flutter/material.dart';
 
 
@@ -13,7 +14,7 @@ class MostlyPlayed extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(
+        appBar: const CustomAppBar(
           title: 'Mostly Played',
           gradientColors: [Colors.blue, Colors.purple],
         ),

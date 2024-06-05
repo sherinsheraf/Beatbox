@@ -1,10 +1,10 @@
 import 'package:beatbox/screens/favourites.dart';
-import 'package:beatbox/screens/homePage.dart';
-import 'package:beatbox/screens/mostlyPlayed.dart';
+import 'package:beatbox/screens/home_page.dart';
+import 'package:beatbox/screens/mostly_played.dart';
 import 'package:beatbox/screens/playlist/playlist.dart';
-import 'package:beatbox/screens/recentlyPlayed.dart';
+import 'package:beatbox/screens/recently_played.dart';
 import 'package:beatbox/utils/colors.dart';
-import 'package:beatbox/widgets/miniPlayer.dart';
+import 'package:beatbox/widgets/mini_player.dart';
 import 'package:flutter/material.dart';
 
 final ValueNotifier<int> _currentIndex = ValueNotifier(0);

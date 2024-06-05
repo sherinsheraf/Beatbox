@@ -1,6 +1,7 @@
 import 'package:beatbox/database/functions.dart';
-import 'package:beatbox/database/model/songModel.dart';
-import 'package:beatbox/screens/playlist/addToPlaylist.dart';
+import 'package:beatbox/database/model/song_model.dart';
+
+import 'package:beatbox/screens/playlist/add_to_playlist.dart';
 import 'package:beatbox/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -11,13 +12,20 @@ import 'package:on_audio_query/on_audio_query.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
   final String title;
   final List<Widget>? actions; 
   final List<Color> gradientColors;
   final Widget? leading; // Optional actions parameter
 
-  CustomAppBar({required this.title,required this.gradientColors, this.leading,this.actions});
+  const CustomAppBar({
+    super.key,  // Using the super parameter shorthand for key
+    required this.title,
+    required this.gradientColors,
+    this.leading,
+    this.actions,
+  });
+
   @override
   Widget build(BuildContext context) {
     return  AppBar(
@@ -58,6 +66,7 @@ class CustomText extends StatelessWidget {
   final TextStyle? style;
 
   const CustomText({
+     super.key, 
     required this.text,
     this.style,
   });
@@ -66,7 +75,7 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: style ?? TextStyle(),
+      style: style ?? const TextStyle(),
     );
   }
 }
@@ -79,6 +88,7 @@ class CustomButton extends StatelessWidget {
   final Color textColor; // Add this property
 
   const CustomButton({
+     super.key, 
     required this.text,
     required this.onPressed,
     this.backgroundColor = const Color.fromARGB(255, 56, 0, 22), // Default Maroon color
@@ -104,7 +114,10 @@ class CustomButton extends StatelessWidget {
 class CustomBackground extends StatelessWidget {
   final Widget child;
 
-  const CustomBackground({Key? key, required this.child}) : super(key: key);
+const CustomBackground({
+    super.key,  // Using the super parameter shorthand for key
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -128,11 +141,11 @@ class CustomSongListTile extends StatelessWidget {
   final Function(String) onSelected;
 
   const CustomSongListTile({
-    Key? key,
+    super.key,
     required this.song,
     required this.onTap,
     required this.onSelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -249,7 +262,7 @@ void handleFavorite(HiveSongModel song, BuildContext context) {
                       'Song removed from favorites successfully',
                       style: TextStyle(color: Colors.black),
                     ),
-                    backgroundColor: Color.fromARGB(255, 250, 248, 248),
+                    backgroundColor:const Color.fromARGB(255, 250, 248, 248),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),

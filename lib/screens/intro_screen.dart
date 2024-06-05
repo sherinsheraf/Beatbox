@@ -1,15 +1,20 @@
-import 'package:beatbox/customClass/customWidget.dart';
-import 'package:beatbox/screens/homePage.dart';
+import 'package:beatbox/custom_class/custom_widget.dart';
+import 'package:beatbox/database/model/song_model.dart';
+import 'package:beatbox/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:beatbox/database/functions.dart';
-import 'package:beatbox/database/model/songModel.dart';
-import 'package:beatbox/widgets/navigationBottomBar.dart';
+
+import 'package:beatbox/widgets/navigation_bottom_bar.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 late List<HiveSongModel> allSongs;
 
 class IntroPage extends StatefulWidget {
+  const IntroPage({
+   super.key, // Add the named key parameter
+  });
+  
   @override
   State<IntroPage> createState() => _IntroPageState();
 }
@@ -45,7 +50,7 @@ class _IntroPageState extends State<IntroPage> {
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
+               const  SizedBox(height: 10),
                 // Text: Play music
                 CustomText(
                   text: 'Discover. Play. Repeat',
@@ -54,12 +59,12 @@ class _IntroPageState extends State<IntroPage> {
                       color: Colors.white,
                       fontStyle: FontStyle.italic),
                 ),
-                SizedBox(height: 40),
+               const SizedBox(height: 40),
                 // Button: Get Connected
                 CustomButton(
                   text: 'Beat Box',
-                  backgroundColor: Color.fromARGB(255, 99, 23, 90), // Maroon color
-                  textColor: Color.fromARGB(255, 250, 248, 250),
+                  backgroundColor:const Color.fromARGB(255, 99, 23, 90), // Maroon color
+                  textColor:const Color.fromARGB(255, 250, 248, 250),
                   onPressed: () {
                     // Navigate to HomePage when button is pressed
                     Navigator.push(
@@ -68,7 +73,7 @@ class _IntroPageState extends State<IntroPage> {
                         // Call the goToHome function
                         goToHome(context);
                         // Return the HomePage widget
-                        return HomePage();
+                        return const HomePage();
                       } ),
                     );
                   },
@@ -105,6 +110,7 @@ class _IntroPageState extends State<IntroPage> {
 
 Future<void> goToHome(BuildContext context) async {
   await Future.delayed(const Duration(seconds: 0));
+ 
   Navigator.pushReplacement(
     context,
     MaterialPageRoute(

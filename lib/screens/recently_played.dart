@@ -1,20 +1,20 @@
-import 'package:beatbox/customClass/customWidget.dart';
+import 'package:beatbox/custom_class/custom_widget.dart';
 import 'package:beatbox/database/functions.dart';
-import 'package:beatbox/widgets/miniPlayer.dart';
-import 'package:beatbox/screens/nowPlayingScreen.dart';
+import 'package:beatbox/widgets/mini_player.dart';
+import 'package:beatbox/screens/now_playing_screen.dart';
 import 'package:flutter/material.dart';
 
 
 class RecentlyPlayed extends StatelessWidget {
-  const RecentlyPlayed({Key? key});
+  const RecentlyPlayed({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(
+        appBar: const CustomAppBar(
           title: 'Recently Played',
-          gradientColors: [Colors.blue, Colors.purple],
+          gradientColors:  [Colors.blue, Colors.purple],
         ),
         body: _buildBody(context),
         bottomSheet: const MiniPlayer(),

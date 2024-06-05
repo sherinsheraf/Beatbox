@@ -1,13 +1,16 @@
-import 'package:beatbox/customClass/customWidget.dart';
+import 'package:beatbox/custom_class/custom_widget.dart';
 import 'package:beatbox/screens/settings/about.dart';
-import 'package:beatbox/screens/settings/privacyPolicy.dart';
+import 'package:beatbox/screens/settings/privacy_policy.dart';
 import 'package:beatbox/screens/settings/terms_and_condition.dart';
 import 'package:beatbox/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen ({
+     super.key,  // Add the named key parameter
+  });
+  
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -22,7 +25,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Scaffold(
         appBar: CustomAppBar(
           title: 'Search',
-          gradientColors: [Colors.blue, Colors.purple],
+          gradientColors:const  [Colors.blue, Colors.purple],
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -109,25 +112,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
               ),
               
-               SizedBox(height: 300.0),// Add a Container to display the version number
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Version',
-                      style: TextStyle(fontSize: 14.0, color: Colors.white),
-                    ),
-                     SizedBox(height: 14.0),
-                    // Add some space between the lines
-                    Text(
-                      '1.0.0',
-                      style: TextStyle(fontSize: 16.0, color:Colors.white),
-                    ),
-                  ],
-                ),
-              ),
+              //  SizedBox(height: 300.0),// Add a Container to display the version number
+              // Container(
+              //   margin: EdgeInsets.symmetric(vertical: 20.0),
+              //   child: Column(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       Text(
+              //         'Version',
+              //         style: TextStyle(fontSize: 14.0, color: Colors.white),
+              //       ),
+              //        SizedBox(height: 14.0),
+              //       // Add some space between the lines
+              //       Text(
+              //         '1.0.0',
+              //         style: TextStyle(fontSize: 16.0, color:Colors.white),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

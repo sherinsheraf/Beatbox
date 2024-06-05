@@ -1,11 +1,14 @@
-import 'package:beatbox/customClass/customWidget.dart';
+import 'package:beatbox/custom_class/custom_widget.dart';
 import 'package:beatbox/database/functions.dart';
-import 'package:beatbox/screens/playlist/singlePalylist.dart';
+import 'package:beatbox/screens/playlist/single_playlist.dart';
+
 import 'package:beatbox/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class Playlist extends StatefulWidget {
-  const Playlist({Key? key}) : super(key: key);
+  const Playlist({
+     super.key,  // Add the named key parameter
+  });
 
   @override
   State<Playlist> createState() => _PlaylistState();
@@ -32,7 +35,7 @@ class _PlaylistState extends State<Playlist> {
           
           appBar: CustomAppBar(
             title: 'Playlist',
-            gradientColors: [Colors.blue, Colors.purple],
+            gradientColors:const [Colors.blue, Colors.purple],
             actions: [
               IconButton(
                 onPressed: () {

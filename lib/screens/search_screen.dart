@@ -1,18 +1,18 @@
-import 'package:beatbox/customClass/customWidget.dart';
+import 'package:beatbox/custom_class/custom_widget.dart';
 import 'package:beatbox/database/functions.dart';
-import 'package:beatbox/database/model/songModel.dart';
-import 'package:beatbox/screens/homePage.dart';
-import 'package:beatbox/screens/introScreen.dart';
-import 'package:beatbox/screens/nowPlayingScreen.dart';
-import 'package:beatbox/screens/playlist/addToPlaylist.dart';
+import 'package:beatbox/database/model/song_model.dart';
+import 'package:beatbox/screens/home_page.dart';
+import 'package:beatbox/screens/intro_screen.dart';
+import 'package:beatbox/screens/now_playing_screen.dart';
+import 'package:beatbox/screens/playlist/add_to_playlist.dart';
 import 'package:beatbox/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  }) ;
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -28,7 +28,7 @@ class _SearchScreenState extends State<SearchScreen> {
       child: Scaffold(
         appBar: CustomAppBar(
           title: 'Search',
-          gradientColors: [Colors.blue, Colors.purple],
+          gradientColors: const [Colors.blue, Colors.purple],
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -76,7 +76,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 Expanded(
                   child: searchlist.isEmpty
-                      ? Center(
+                      ? const Center(
                           child: Text(
                             'No such songs found...',
                             style: TextStyle(

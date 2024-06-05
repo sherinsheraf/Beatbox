@@ -347,10 +347,11 @@
 // }
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
-import 'package:beatbox/customclass/customWidget.dart';
+import 'package:beatbox/custom_class/custom_widget.dart';
 import 'package:beatbox/database/functions.dart';
-import 'package:beatbox/database/model/songModel.dart';
-import 'package:beatbox/screens/playlist/addToPlaylist.dart';
+
+import 'package:beatbox/database/model/song_model.dart';
+import 'package:beatbox/screens/playlist/add_to_playlist.dart';
 import 'package:beatbox/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -360,10 +361,10 @@ import 'package:marquee/marquee.dart';
 class NowPlayingScreen extends StatefulWidget {
   final HiveSongModel? music;
   const NowPlayingScreen({
-    Key? key,
+    super.key,
     this.songs,
     this.music,
-  }) : super(key: key);
+  }) ;
   final List<SongModel>? songs;
   @override
   State<NowPlayingScreen> createState() => _NowPlayingScreenState();
@@ -382,7 +383,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
       child: Scaffold(
      appBar: CustomAppBar(
           title: 'Now Playing',
-          gradientColors: [Colors.blue, Colors.purple],
+          gradientColors: const  [Colors.blue, Colors.purple],
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -562,7 +563,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                                 int.parse(playing.audio.audio.metas.id!),
                               
                               ); 
-                                print(ischecking);
+                                logger.e(ischecking);
                                 
                               });
                             },

@@ -1,16 +1,16 @@
 
 
-import 'package:beatbox/customclass/customWidget.dart';
+import 'package:beatbox/custom_class/custom_widget.dart';
 import 'package:beatbox/database/functions.dart';
-import 'package:beatbox/database/model/songModel.dart';
-import 'package:beatbox/utils/colors.dart';
-import 'package:beatbox/widgets/miniPlayer.dart';
+
+import 'package:beatbox/database/model/song_model.dart';import 'package:beatbox/utils/colors.dart';
+import 'package:beatbox/widgets/mini_player.dart';
 
 import 'package:flutter/material.dart';
 
 class AddToPlaylistsScreen extends StatefulWidget {
   final HiveSongModel music;
-  const AddToPlaylistsScreen({Key? key, required this.music}) : super(key: key);
+  const AddToPlaylistsScreen({super.key, required this.music});
 
   @override
   State<AddToPlaylistsScreen> createState() => _AddToPlaylistsScreenState();
@@ -33,7 +33,7 @@ class _AddToPlaylistsScreenState extends State<AddToPlaylistsScreen> {
       child: Scaffold(
         appBar: CustomAppBar(
           title: 'Add To Playlist',
-          gradientColors: [Colors.blue, Colors.purple],
+          gradientColors: const [Colors.blue, Colors.purple],
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);

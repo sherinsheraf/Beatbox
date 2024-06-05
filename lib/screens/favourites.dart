@@ -1,12 +1,12 @@
 import 'package:beatbox/database/functions.dart';
-import 'package:beatbox/database/model/songModel.dart';
-import 'package:beatbox/widgets/miniPlayer.dart';
-import 'package:beatbox/screens/nowPlayingScreen.dart';
+import 'package:beatbox/database/model/song_model.dart';
+import 'package:beatbox/widgets/mini_player.dart';
+import 'package:beatbox/screens/now_playing_screen.dart';
 import 'package:flutter/material.dart';
 
 
 // Import the custom widgets and functions
-import 'package:beatbox/customClass/customWidget.dart';
+import 'package:beatbox/custom_class/custom_widget.dart';
 
 class MyFavorites extends StatefulWidget {
   const MyFavorites({super.key});
@@ -20,7 +20,7 @@ class _MyFavoritesState extends State<MyFavorites> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(
+        appBar: const CustomAppBar(
           title: 'My Favorites',
           gradientColors: [Colors.blue, Colors.purple],
         ),

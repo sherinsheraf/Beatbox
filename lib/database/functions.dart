@@ -1,8 +1,11 @@
 
-import 'package:beatbox/database/model/songModel.dart';
-import 'package:beatbox/screens/introScreen.dart';
+
+import 'package:beatbox/database/model/song_model.dart';
+import 'package:beatbox/screens/intro_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:logger/logger.dart';
+
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
@@ -147,9 +150,11 @@ Future<List<HiveSongModel>> getSongs() async {
 
 
 // Favorites screen
+final Logger logger = Logger();
 ValueNotifier<List<HiveSongModel>> fav = ValueNotifier([]);
 
 Future<void> addToFavorites(int id) async {
+  
   try {
     final favDB = await Hive.openBox<FavoriteModel>('fav_DB');
 
@@ -173,10 +178,11 @@ Future<void> addToFavorites(int id) async {
      //fav.notifyListeners();
   } catch (e) {
     // Handle potential errors, like issues with the database
-    print("Error adding to favorites: $e");
+      logger.e('Error adding to favorites: $e');
+}
   }
   
-}
+
 
 Future<void> removeFromFav(int id) async {
   try {
@@ -189,7 +195,7 @@ Future<void> removeFromFav(int id) async {
     fav.value = fav.value.where((element) => element.id != id).toList();
   } catch (e) {
     // Handle potential errors, like issues with the database
-    print("Error removing from favorites: $e");
+    logger.e ("Error removing from favorites: $e");
   }
 }
 

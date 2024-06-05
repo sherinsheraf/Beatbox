@@ -1,12 +1,11 @@
 
-import 'package:beatbox/customClass/customWidget.dart';
+import 'package:beatbox/custom_class/custom_widget.dart';
 import 'package:beatbox/database/functions.dart';
-
-import 'package:beatbox/database/model/songModel.dart';
-import 'package:beatbox/screens/introScreen.dart';
-import 'package:beatbox/screens/nowPlayingScreen.dart';
-import 'package:beatbox/screens/searchScreen.dart';
-import 'package:beatbox/screens/settings/settingsScreen.dart';
+import 'package:beatbox/database/model/song_model.dart';
+import 'package:beatbox/screens/intro_screen.dart';
+import 'package:beatbox/screens/now_playing_screen.dart';
+import 'package:beatbox/screens/search_screen.dart';
+import 'package:beatbox/screens/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -16,7 +15,9 @@ ValueNotifier<List<HiveSongModel>> allSongsNotifier = ValueNotifier([]);
 final OnAudioQuery _audioQuery = OnAudioQuery();
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({
+    super.key, // Include key as a super parameter
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
        appBar: CustomAppBar(
           title: 'Beat Box',
-          gradientColors: [Colors.blue, Colors.purple],
+          gradientColors: const [Colors.blue, Colors.purple],
           actions: [
             IconButton(
               onPressed: () {

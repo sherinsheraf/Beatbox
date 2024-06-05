@@ -1,9 +1,10 @@
 import 'package:beatbox/database/functions.dart';
-import 'package:beatbox/database/model/songModel.dart';
-import 'package:beatbox/screens/introScreen.dart';
-import 'package:beatbox/screens/nowPlayingScreen.dart';
+
+import 'package:beatbox/database/model/song_model.dart';
+import 'package:beatbox/screens/intro_screen.dart';
+import 'package:beatbox/screens/now_playing_screen.dart';
 import 'package:beatbox/utils/colors.dart';
-import 'package:beatbox/widgets/miniPlayer.dart';
+import 'package:beatbox/widgets/mini_player.dart';
 import 'package:flutter/material.dart';
 
 
@@ -223,7 +224,7 @@ class SinglePlayListScreen extends StatelessWidget {
                                                                                 Colors.black),
                                                                       ),
                                                                       backgroundColor:
-                                                                          Color.fromARGB(255, 247, 245, 245),
+                                                                         const Color.fromARGB(255, 247, 245, 245),
                                                                       shape:
                                                                           RoundedRectangleBorder(
                                                                         borderRadius:
@@ -258,7 +259,7 @@ class SinglePlayListScreen extends StatelessWidget {
                                                                     .black),
                                                           ),
                                                           backgroundColor:
-                                                              Color.fromARGB(255, 5, 5, 5),
+                                                            const  Color.fromARGB(255, 5, 5, 5),
                                                           shape:
                                                               RoundedRectangleBorder(
                                                             borderRadius:
