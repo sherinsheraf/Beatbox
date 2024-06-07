@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: IntroPage(), // Set MainPage as the initial route
+      home:const IntroPage(), // Set MainPage as the initial route
     );
   }
 }

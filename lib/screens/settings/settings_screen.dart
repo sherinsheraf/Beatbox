@@ -5,12 +5,12 @@ import 'package:beatbox/screens/settings/terms_and_condition.dart';
 import 'package:beatbox/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen ({
-     super.key,  // Add the named key parameter
+  const SettingsScreen({
+    super.key,
   });
-  
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -18,14 +18,28 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool istrue = false;
-  
+  String _version = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchVersion();
+  }
+
+  Future<void> _fetchVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      _version = packageInfo.version;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBar(
-          title: 'Search',
-          gradientColors:const  [Colors.blue, Colors.purple],
+          title: 'Settings',
+          gradientColors: const [Colors.blue, Colors.purple],
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -54,7 +68,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 trailing: IconButton(
                   onPressed: () {
-                    _shareApp(); // Call the share method when the button is pressed
+                    _shareApp();
                   },
                   icon: const Icon(Icons.share),
                   color: Colors.white,
@@ -111,26 +125,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   color: Colors.white,
                 ),
               ),
-              
-              //  SizedBox(height: 300.0),// Add a Container to display the version number
-              // Container(
-              //   margin: EdgeInsets.symmetric(vertical: 20.0),
-              //   child: Column(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //       Text(
-              //         'Version',
-              //         style: TextStyle(fontSize: 14.0, color: Colors.white),
-              //       ),
-              //        SizedBox(height: 14.0),
-              //       // Add some space between the lines
-              //       Text(
-              //         '1.0.0',
-              //         style: TextStyle(fontSize: 16.0, color:Colors.white),
-              //       ),
-              //     ],
-              //   ),
-              // ),
+              const SizedBox(height: 300.0),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Version',
+                      style: TextStyle(fontSize: 14.0, color: Colors.white),
+                    ),
+                    const SizedBox(height: 14.0),
+                    Text(
+                      _version,
+                      style: const TextStyle(fontSize: 16.0, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -141,33 +153,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   // Method to show the share dialog with a predefined text
   void _shareApp() {
-     const String text = 'http://www.amazon.com/gp/mas/dl/android?p=com.beatbox.music';
+    const String text = 'https://www.amazon.com/dp/B0CVMY5X61/ref=apps_sf_sta';
     Share.share(text);
-    
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const String text = 'https://www.amazon.com/dp/B0CVMY5X61/ref=apps_sf_sta';
-    // Share.share(text);

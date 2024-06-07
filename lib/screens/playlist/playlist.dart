@@ -353,7 +353,7 @@ class _PlaylistState extends State<Playlist> {
                       'Playlist deleted successfully',
                       style: TextStyle(color: Colors.black),
                     ),
-                    backgroundColor: Color.fromARGB(255, 253, 251, 251),
+                    backgroundColor: const Color.fromARGB(255, 253, 251, 251),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),

@@ -112,6 +112,7 @@ Future<void> goToHome(BuildContext context) async {
   await Future.delayed(const Duration(seconds: 0));
  
   Navigator.pushReplacement(
+    // ignore: use_build_context_synchronously
     context,
     MaterialPageRoute(
         builder: (BuildContext context) => BottomNavigationScreen()),
