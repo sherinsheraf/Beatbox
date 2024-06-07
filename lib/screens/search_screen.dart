@@ -256,7 +256,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
           ),
         ),
-        backgroundColor: KPprimary,
+        backgroundColor: KPprimary, 
       ),
     );
   }
