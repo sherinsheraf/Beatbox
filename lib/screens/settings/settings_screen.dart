@@ -153,7 +153,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   // Method to show the share dialog with a predefined text
   void _shareApp() {
-    const String text = 'https://www.amazon.com/dp/B0CVMY5X61/ref=apps_sf_sta';
+    const String text = 'https://www.amazon.com/gp/mas/dl/android?p=com.beatboxx.music';
     Share.share(text);
   }
 }

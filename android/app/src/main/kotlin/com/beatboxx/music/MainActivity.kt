@@ -1,4 +1,4 @@
-package com.example.beatbox
+package com.beatboxx.music
 
 import io.flutter.embedding.android.FlutterActivity
 
